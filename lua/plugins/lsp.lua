@@ -57,6 +57,10 @@ return {
                 keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)                       -- mapping to restart lsp if necessary
                 opts.desc = "Format current buffer"
                 keymap.set("n", "<leader>b", vim.lsp.buf.format, opts)                       -- format current buffer
+                opts.desc = "Wrap word with double quotes"
+                keymap.set("n", '<leader>w"', 'ciw""<Esc>P', opts)                       -- Wrap word with double quotes
+                opts.desc = "Wrap word with single quotes"
+                keymap.set("n", "<leader>w'", "ciw''<Esc>P", opts)                       -- Wrap word with single quotes
 
                 vim.api.nvim_create_autocmd("BufWritePre", {
                     buffer = ev.buf,
