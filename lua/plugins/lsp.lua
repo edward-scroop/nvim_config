@@ -18,6 +18,32 @@ return {
             filetypes = { 'systemd' },
         })
 
+        local vue_plugin = {
+            name = "@vue/typescript-plugin",
+            location = vim.fn.stdpath('data') .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+            languages = {
+                "vue"
+            },
+            configNamespace = "typescript",
+        }
+
+        local ts_ls_config = {
+            init_options = {
+                plugins = {
+                    vue_plugin,
+                },
+            },
+            filetypes = {
+                "typescript",
+                "javascript",
+                "vue",
+            },
+        }
+        vim.lsp.config('ts_ls', ts_ls_config)
+
+        vim.lsp.enable("ts_ls")
+        vim.lsp.enable("vue_ls")
+
         vim.lsp.enable("rust_analyzer")
         vim.lsp.enable("ansiblels")
         vim.lsp.enable("lua_ls")
@@ -25,8 +51,6 @@ return {
         vim.lsp.enable("pylsp")
         vim.lsp.enable("systemd_lsp")
         vim.lsp.enable("jsonls")
-        vim.lsp.enable("ts_ls")
-        vim.lsp.enable("vue_ls")
 
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
