@@ -77,7 +77,7 @@ return {
                 opts.desc = "Show documentation for what is under cursor"
                 keymap.set("n", "K", vim.lsp.buf.hover, opts)                                -- show documentation for what is under cursor
                 opts.desc = "Restart LSP"
-                keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)                       -- mapping to restart lsp if necessary
+                keymap.set("n", "<leader>rs", ":lsp restart<CR>", opts)                       -- mapping to restart lsp if necessary
                 opts.desc = "Format current buffer"
                 keymap.set("n", "<leader>b", vim.lsp.buf.format, opts)                       -- format current buffer
                 opts.desc = "Wrap word with double quotes"
