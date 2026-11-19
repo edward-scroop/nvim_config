@@ -5,7 +5,7 @@ return {
     config = function()
         -- local palette = require("nightfox.palette").load("carbonfox")
 
-        require('nightfox').setup({
+        require("nightfox").setup({
             options = {
                 styles = {
                     comments = "italic",

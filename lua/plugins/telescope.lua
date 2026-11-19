@@ -1,17 +1,28 @@
 return {
-    'nvim-telescope/telescope.nvim',
+    "nvim-telescope/telescope.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
-        local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-        vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-        vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-        vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+        local builtin = require("telescope.builtin")
+        vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+        vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+        vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+        vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
-        require('telescope').setup {
+        require("telescope").setup {
+            defaults = {
+                sorting_strategy = "descending",
+                selection_strategy = "follow",
+                layout_strategy = "horizontal",
+                layout_config = {
+                    width = { padding = 0 },
+                    height = { padding = 0 },
+                    preview_width = 0.5,
+                },
+                path_display = { "filename_first" },
+            },
             extensions = {
                 fzf = {
                     fuzzy = true,
@@ -22,6 +33,6 @@ return {
             }
         }
 
-        require('telescope').load_extension('fzf')
+        require("telescope").load_extension("fzf")
     end,
 }
